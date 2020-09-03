@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div>
+    "लिट् हिंदी" एक लिटरेरी प्रोजेक्ट है जो हिंदी भाषा के लिए ख़ास है| अगर आप इस प्रोजेक्ट या LitProject के किसी भी
+    सेक्शन में काम करना चाहते हैं तो हमारे ईमेल पर कांटेक्ट करें|<br>
+    धन्यवाद!<br>
+    <br>
+    Other Projects:<br>
+    <ul style="text-align: left;">
+      <li>LitUrdu</li>
+      <li>LitEnglish</li>
+    </ul>
+  </div>
+
+  <h4>Details</h4>
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>{{blogInfo?.name}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td> {{blogInfo?.description}}
+      <td>
+    </tr>
+    <tr>
+      <td>Published</td>
+      <td> {{dateFormat(blogInfo?.published)}}
+      <td>
+    </tr>
+    <tr>
+      <td>Updated</td>
+      <td> {{dateFormat(blogInfo?.updated)}}
+      <td>
+    </tr>
+    <tr>
+      <td>Total Posts</td>
+      <td> {{blogInfo?.posts.totalItems}}
+      <td>
+    </tr>
+    <tr>
+      <td>Locale (language)</td>
+      <td> {{blogInfo?.locale.language}}
+      <td>
+    </tr>
+  </table>
+
+  <div class="center">
+    <h1>— हमारे प्रोजेक्ट्स —</h1>
+    <img class="LitLogos"
+      src="https://1.bp.blogspot.com/-HOYt0sYIJwI/XZOQ-GJEfrI/AAAAAAAAA1U/SIFmgugwxh8sXZ1xSDTmd36d3P-7qfHLACKgBGAsYHg/s1600/1.png">
+    <img class="LitLogos"
+      src="https://1.bp.blogspot.com/-U2zv5mAEnmA/XZOQ-EyApBI/AAAAAAAAA1U/YK_4LrR3-XI2fAMP5pFQ8FHSrcm1FI2QwCKgBGAsYHg/s1600/2.png">
+    <img class="LitLogos"
+      src="https://1.bp.blogspot.com/-omLHdyEWaRA/XZOQ-EwQq5I/AAAAAAAAA1U/w_0XTFPLpCgCRqI-ZLZ9DPivoiM4I5j9QCKgBGAsYHg/s1600/3.png">
+  </div>
+</ion-content>

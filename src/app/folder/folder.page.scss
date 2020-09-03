@@ -1,3 +1,5 @@
+.center {text-align: center;}
+.center label, #nextPageLabel { color: var(--ion-color-medium); font-size:small}
 ion-menu-button {
   color: var(--ion-color-primary);
 }
@@ -19,10 +21,84 @@ ion-menu-button {
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #8c8c8c;
+  color: var(--ion-color-medium);//grey
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+}
+ion-card-content p span {
+  color: var(--ion-color-primary);
+}
+.nextPage ion-label{
+  color: var(--ion-color-medium);
+}
+
+ion-card{
+  width:100% !important;
+margin-left: 0 !important;
+margin-right: 0 !important;
+margin-top: 0 !important;
+}
+ion-card-title {
+  margin-top: 10px;
+}
+
+/*Date column styles*/
+.post-date {
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: uppercase;  
+  color: #B7B7B7;
+  margin-top: 7px;  
+    top: 8px;    
+    text-align: center;
+    width: 75px;
+}
+.post-date-day {
+  color: #94A79F;
+  display: block;
+  font-size: 60px;
+  line-height: 50px;  
+  font-weight: 400;
+  text-align: center;
+}
+.post-date-month, .post-date-year {
+  color: #333333;
+  font-family: 'Laila';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 30px;
+}
+.post-date:after {
+  content: "";
+  position: absolute;
+  height: 11px;
+  width: 11px;
+  display: block;
+  border-radius: 50%;
+  left: 94px;
+  top: 17px;
+  z-index: 2;
+  background: #94A79F;
+}
+.cardColumn:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 1px;
+  left: 59px;
+  top: 25px;
+  display: block;
+  background: rgba(68,68,68,0.1);
+}
+.cardColumn { padding-left: 20px;}
+.postNumber {
+  color: var(--ion-color-medium);
+  font-size: large;
+  text-align: right;
+}
+p.labelList {
+  margin-top: 10px;
 }

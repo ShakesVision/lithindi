@@ -1,0 +1,33 @@
+#post-content {
+    font-family: 'Laila';
+    line-height: 1.5em;
+    text-align: justify;
+    font-size: 18px;    
+}
+.end-mark:after {
+    content: "\2766\2766\2766"; /* Here comes the ivy leaf */
+    font-size: 150%; /* Makes the leaf larger than the normal text */        
+    position: relative; /* This is just an homage to Albert Einstein */
+    top: 15px /*Vertical distance from the last line of text */
+}
+h1 { 
+    font-size: 30px;
+    color: var(--ion-color-primary);    
+}
+.center {
+    text-align: center;    
+    margin-bottom: 30px;
+}
+.center span { color : var(--ion-color-medium); font-size: x-small;}
+#timeRequired { color: var(--ion-color-secondary); font-size: small; }
+
+hr {color: black;}
+
+.datetime {
+    color : var(--ion-color-medium);
+    font-size: xx-small;
+    text-align: right;
+}
+.comment-wrapper a {
+    text-decoration:none;
+}

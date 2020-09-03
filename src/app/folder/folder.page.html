@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-searchbar animated [(ngModel)]="searchTerm" (keyup.enter)="getPostsBySearch()"
+      placeholder="Search in posts...">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +16,59 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-refresher slot="fixed" pullMin="70" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="refresh" pullingText="Pull to refresh..." refreshingSpinner="circles"
+      refreshingText="Reloading...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- <ion-slides pager="true">
+    <ion-slide>
+      <h3> سیمابؔ اکبر آبادی </h3>
+      <br>
+      <p>جب تک مضمون اور خیال نئے نہیں ہوتے، کلام میں ”آورد“ رہتی ہے اور ہمیشہ دوسروں کے خیال نظم ہوتے رہتے ہیں جو ایک
+        بڑا عیب ہے۔</p>
+    </ion-slide>    
+  </ion-slides> -->
+  <div *ngFor="let post of posts; let postNo = index">    
+
+    <ion-card class="no-margin no-padding">
+      <!-- <img [src]="heroImgUrl(post.content)" alt=""> -->
+      <ion-card-header button (click)="gotoPost(post)">
+        <ion-card-title>{{post.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label id="truncatedTxt"> {{trunc(post.content)}} </ion-label>
+
+        <!-- also publish postNo and share article -->
+        <!-- <p> {{date[2]}} <br> {{date[1]}} - {{date[3]}} </p>       -->                
+        <p class="labelList">
+          <ng-container *ngFor="let label of post.labels; let i = index">
+            <span (click)="postByLabel(label)"> {{label}} </span>
+            <ng-container *ngIf="i+1 != post.labels.length"> . </ng-container>
+          </ng-container>
+        </p>
+        <div class="postNumber"> #{{postNo+1}} </div>
+      </ion-card-content>
+      <!-- <ion-button (click)="parseCheck(post.content)"> Grab </ion-button> -->
+    </ion-card>
+
+  </div>
+
+  <div class="nextPage center">
+    <ng-container *ngIf="morePosts">
+      <ion-button (click)="nextPage(nextPageToken)">
+        <ion-icon name="arrow-down"></ion-icon>
+      </ion-button>
+      <br>
+      <ion-label>Load More</ion-label>
+    </ng-container>
+    <ion-label *ngIf="!morePosts && posts.length!=0" id="nextPageLabel">— END —</ion-label>
+  </div>
+
+  <div id="container" *ngIf="!morePosts && posts.length==0">
+    <strong class="capitalize">      
+       Wait!</strong>
+    <p>Nothing here. Wait, or <ion-label color="primary" (click)="getAll()">refresh.  </ion-label><br>Check your internet connection if it's been too long. </p>
   </div>
 </ion-content>

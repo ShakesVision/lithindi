@@ -24,3 +24,8 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import url('https://fonts.googleapis.com/css2?family=Eczar&family=Laila:wght@300&display=swap');
+
+* {
+    font-family: 'Laila', 'Eczar' ,'Times New Roman', Times, serif;
+}

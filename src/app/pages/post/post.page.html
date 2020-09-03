@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="interstitial()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="changeFontSize(1)" slot="end">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="changeFontSize(-1)" slot="end">
+        <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="changeFontSize(1)" slot="end">
+        <ion-icon slot="icon-only" name="contrast"></ion-icon>
+      </ion-button>
+      <ion-button (click)="changeFontSize(1)" slot="end">
+        <ion-icon slot="icon-only" name="information-circle"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="center">
+      <span> {{grabDate(post.published)}} </span>
+      <div id="timeRequired"> {{timeRequired(post.content)}} minutes read</div>
+      <h1> {{post.title}} </h1>      
+    </div>
+    <div id="post-content" [innerHTML]="post.content"></div>
+    <div class="end-mark center"></div>
+    Labels: <ion-chip *ngFor="let label of post.labels"> {{label}} </ion-chip>
+    <div class="comment-wrapper">
+      <ng-container *ngIf="comments?.length == 0">कोई टिप्पणी नहीं:</ng-container>
+      <ng-container *ngIf="comments?.length == 1"> 1 टिप्पणी:</ng-container>
+      <ng-container *ngIf="comments?.length > 1"> {{comments.length}} टिप्‍पणियां:</ng-container>
+
+      <ng-container *ngIf="comments?.length > 0">
+        <ion-item *ngFor="let comment of comments">
+          <ion-avatar slot="start">
+            <a [href]="comment.author.url" rel="nofollow">
+              <img [src]="comment.author.image.url" alt="">
+            </a>
+          </ion-avatar>
+          <ion-label class="ion-text-wrap">
+            <h3><a [href]="comment.author.url" rel="nofollow">{{comment.author.displayName}}</a></h3>
+            <p class="comment-content"> {{comment.content}} </p>
+            <div class="datetime secondary-text"> {{dateFormat(comment.published)}} </div>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+  </div>
+
+  <ion-button expand="full" (click)="openUrl()">
+    <ion-icon slot="start" name="pencil"></ion-icon>
+    <ion-label>अपनी टिप्पणी लिखें</ion-label>
+  </ion-button>
+
+</ion-content>
